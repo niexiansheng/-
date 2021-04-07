@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>老聂的云播放器</title>
+  <!-- 样式 -->
+ <link rel="stylesheet" href="./css/index.css">
+  
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="play_wrap" id="player">
+      <div class="search_bar">
+        <img src="https://sm.ms/image/FO95hAIXyZqoHct" alt="" />
+        <!-- 搜索歌曲 -->
+        <input type="text" placeholder="输入要播放的视频" autocomplete="off" v-model='query' @keyup.enter="searchVideo" />
+      </div>
+      <div class="center_con">
+        <div class="video_con" v-show="showVideo">
+           
+           
+            <iframe src="https://api.52jiexi.top/?url=https://v.qq.com/x/cover/mzc00200qek447o/k0034u21nxe.html" width="100%" scrolling="no" height="100%" align="middle" frameborder="no" hspace="0" vspace="0" allowtransparency="true" allowfullscreen="true" marginheight="0" marginwidth="0">
+           {{videoUrl}}
+            </iframe>
+      </div>
+      
+      
+    </div>
+  </div>
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 官网提供的 axios 在线地址 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+      var app=new Vue({
+          el:"#player",
+          data:{
+              //搜索视频地址
+              query:'https://www.iqiyi.com/v_1npt5xl5k9s.html?vfm=2008_aldbd',
+              //视频连接
+              videoUrl:'',
+               // 是否正在播放
+              isPlay: false,
+              // 显示视频播放
+              showVideo: false,
+          },
+          methods:{
+              searchVideo:function(){
+                  axios.get('https://api.52jiexi.top/?url='+this.query)
+                  .then((response)=>{
+                      var that=this;
+                       that.videoUrl=response.data;
+                       this.showVideo=true;
+                      console.log(response);
+                  })
+              }
+          }
+      })
+  </script>
+  
+</body>
+
+</html>

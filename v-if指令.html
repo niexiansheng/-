@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-if</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" @click="toggleIsShow" value="点击显示">
+        <p v-if="isShow">黑马程序员</p>
+        <p v-if="isShow">黑马程序员</p>
+         <h1 v-if="teaveure>=145">热死了</h1>
+    </div>
+    <script>
+        var app= new Vue( {
+            el:"#app",
+            data:{
+                isShow:false,
+                teaveure:155
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isShow=!this.isShow;
+                }
+            }
+        })
+       
+    </script>
+    
+</body>
+</html>

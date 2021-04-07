@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="切换显示状态" @click="changeIsshow">
+        <img src="https://img0.baidu.com/it/u=2151136234,3513236673&fm=26&fmt=auto&gp=0.jpg" alt="" v-show="isShow">
+        <img src="https://img0.baidu.com/it/u=2151136234,3513236673&fm=26&fmt=auto&gp=0.jpg" alt="" v-show="age>=18">
+    </div>
+    <script>
+        var app= new Vue({
+            el:"#app",
+            data:{
+                isShow:false,
+                age:18
+            },
+            methods:{
+                changeIsshow:function()
+                {
+                    this.isShow=!this.isShow;
+                    console.log(this.isShow);
+                }
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>

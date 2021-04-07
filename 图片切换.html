@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>图片切换</title>
+</head>
+<body>
+    <div id="app">
+        <a href="javascript:void(0)" v-show="index!=0" @click="prev">左</a>
+        <img :src="imgArr[index]" alt="">
+        <a href="javascript:void(0)" v-show="index<imgArr.length-1" @click="next">右</a>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                imgArr:[
+                    "https://img0.baidu.com/it/u=2308190668,2968374054&fm=11&fmt=auto&gp=0.jpg",
+                    "https://img2.baidu.com/it/u=3206689113,2237998950&fm=26&fmt=auto&gp=0.jpg",
+                    "https://img0.baidu.com/it/u=2676935521,922112450&fm=11&fmt=auto&gp=0.jpg"
+                ],
+                index:0
+
+            },
+            methods:{
+                next:function(){
+                    this.index++;
+                },
+                prev:function(){
+                    this.index--;
+                },
+
+
+
+            }
+
+
+        })
+    </script>
+</body>
+</html>

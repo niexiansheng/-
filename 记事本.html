@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记事本</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        .div {
+            margin: 0 auto;
+            width: 240px;
+            height: 240px;
+            border: 1px solid crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <section id="todoapp">
+            <!-- 头部 -->
+            <header>
+                <h1>记事本</h1>
+                <input type="text" v-model="inputValue" v-on:keyup.enter="add" autofocus="autofocus" autocomplete="off">
+            </header>
+            <!-- main -->
+            <section>
+                <ul>
+                    <li v-for="(item,index) in list">
+                        <span>{{index+1}}</span>
+                        <label for="">{{item}}</label>
+                        <button class="destroy" @click="remove(index)">删除</button>
+                    </li>
+                </ul>
+
+
+            </section>
+            <footer v-show="list.length!=0">
+                {{list.length}}
+                <span></span>
+                <button @click="clear">clear</button>
+            
+            </footer>
+        </section>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#todoapp",
+            data: {
+                list: ["你好", "我好", "大家好"],
+                inputValue: "好好学习天天向上"
+            },
+            methods: {
+                add: function () {
+                    // alert(123)
+                    //写入数组
+                    this.list.push(this.inputValue);
+                },
+                remove:function(index){
+                    // console.log(index);
+                    //根据下标移除
+                    this.list.splice(index,1);
+                },
+                clear:function()
+                {
+                    this.list=[];
+                }
+                // this.list.push(this.inputValue);
+
+            }
+        })
+    </script>
+</body>
+
+</html>

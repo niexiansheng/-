@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-bind</title>
+</head>
+<style>
+    .active{
+        border:1px solid red;
+        height: 15px;
+        width: 15px;
+    }
+</style>
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc" alt=""><br>
+        <img :src="imgSrc" alt="" :class="{active:isActive}"><br>
+        <input type="button" @click="toggleIsShow" value="显示切换">
+    </div>
+    <script>
+        var app= new Vue( {
+            el:"#app",
+            data:{
+                // isShow:false,
+                imgSrc:"https://img0.baidu.com/it/u=2151136234,3513236673&fm=26&fmt=auto&gp=0.jpg",
+                imgTitle:"黑马程序员",
+                isActive:false
+            
+            },
+            methods:{
+                toggleIsShow:function(){
+                    this.isActive=!this.isActive;
+                }
+            }
+        })
+       
+    </script>
+    
+</body>
+</html>
